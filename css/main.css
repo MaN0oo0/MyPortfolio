@@ -1665,7 +1665,10 @@ label {
     }
     .author-image-large {
         position: static;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
+        justify-content: center;
+        width: 400px;
+        display: flex;
     }
     .author-image-large img {
         display: block;
@@ -1681,6 +1684,7 @@ label {
         margin-bottom: 15px;
         margin-right: 0;
         padding: 0;
+        width: 50px;
     }
     .about-author .author-desc b {
         display: block;
