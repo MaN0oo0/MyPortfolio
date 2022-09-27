@@ -388,7 +388,8 @@ label {
 }
 
 .page-nav {
-    bottom: 40px;
+        top: 70%;
+
     left: 0;
     position: absolute;
     right: 0;
@@ -398,7 +399,7 @@ label {
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
     font-weight: 500;
-    line-height: 0.9;
+    line-height:  57.9;
     text-transform: uppercase;
 }
 
