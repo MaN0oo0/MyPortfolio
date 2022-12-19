@@ -12,7 +12,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- fevicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/img/Mohamed.jpg">
+<style>
+    #WelcomeText {
+  border-right: .05em solid;
+  animation: caret 1s steps(1) infinite;
+}
 
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
+}
+</style>
     <!-- ================================
         CSS Files
         ================================= -->
@@ -63,9 +74,9 @@
                         <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
                             <div class="page-title home text-center">
                                 <img src="img/Dev.jpg" alt="">
-                                <p>Welcome to my little world</p>
+                                <p id="ff"></p>
                             </div>
-
+                      
                             <div class="hexagon-menu clear">
                                 <div class="hexagon-item">
                                     <div class="hex-item">
@@ -231,8 +242,54 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery-validation.min.js"></script>
-    <script src="js/form.min.js"></script>
+    <!-- <script src="js/form.min.js"></script> -->
     <script src="js/main.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded',function(event){
+  // array with texts to type in typewriter
+  var dataText = [ "Welcome!",  "to my world !"];
+  
+  // type one text in the typwriter
+  // keeps calling itself until the text is finished
+  function typeWriter(text, i, fnCallback) {
+    // chekc if text isn't finished yet
+    if (i < (text.length)) {
+      // add next character to h1
+     document.querySelector("#ff").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true" id="WelcomeText"></span>';
+
+      // wait for a while and call this function again for next character
+      setTimeout(function() {
+        typeWriter(text, i + 1, fnCallback)
+      }, 100);
+    }
+    // text finished, call callback if there is a callback function
+    else if (typeof fnCallback == 'function') {
+      // call callback after timeout
+      setTimeout(fnCallback, 700);
+    }
+  }
+  // start a typewriter animation for a text in the dataText array
+   function StartTextAnimation(i) {
+     if (typeof dataText[i] == 'undefined'){
+        setTimeout(function() {
+          StartTextAnimation(0);
+        }, 2000);
+     }
+     // check if dataText[i] exists
+    if (i < dataText[i].length) {
+      // text exists! start typewriter animation
+     typeWriter(dataText[i], 0, function(){
+       // after callback (and whole text has been animated), start next text
+       StartTextAnimation(i + 1);
+     });
+    }
+  }
+  // start the text animation
+  StartTextAnimation(0);
+});
+</script>
 </body>
 
 </html>
